@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>ros_service_basic</name>
+  <name>ros_basic_service</name>
   <version>0.0.0</version>
   <description>The ros_service_basic package</description>
 

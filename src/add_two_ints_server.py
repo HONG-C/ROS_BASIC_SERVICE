@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from ros_service_basic.srv import*
+from ros_basic_service.srv import*
 import rospy
 
 def handle_add_two_ints(req):
