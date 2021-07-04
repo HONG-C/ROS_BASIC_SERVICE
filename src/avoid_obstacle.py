@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
+#서버(서브스크라이버)
 
 from ros_basic_service.srv import*
 import rospy

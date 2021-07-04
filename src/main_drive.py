@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
+#클라이언트(퍼블리셔)
 
 import sys
 import rospy
