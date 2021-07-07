@@ -6,11 +6,11 @@ import sys
 import rospy
 from ros_basic_service.srv import *
 
-def add_two_ints_client(x,y):
-   rospy.wait_for_service('add_two_ints')
+def main_drive(x,y):
+   rospy.wait_for_service('avoid_angle')
    try:
-      add_two_ints = rospy.ServiceProxy('add_two_ints', AddTwoInts)
-      resp1 = add_two_ints(x,y)
+      avoid_angle = rospy.ServiceProxy('avoid_angle', AddTwoInts)
+      resp1 = avoid_angle(x,y)
       return resp1.sum
    except rospy.ServiceException, e:
       print "Service call failed: %s" %e
@@ -27,6 +27,6 @@ if __name__=="__main__":
       sys.exit(1)
 
    print "Requesting %s + %s" %(x,y)
-   print "%s + %s = %s" %(x, y, add_two_ints_client(x,y))
+   print "%s + %s = %s" %(x, y, main_drive(x,y))
 
 
