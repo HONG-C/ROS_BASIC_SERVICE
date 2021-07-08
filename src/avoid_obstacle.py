@@ -7,11 +7,11 @@ import rospy
 
 def handle_avoid_obstacle(req):
    print "Returning [%s + %s = %s]" %(req.a, req.b, (req.a+req.b))
-   return AddTwoIntsResponse(req.a + req.b)
+   return AvoidAngleResponse(req.a + req.b)
 
 def avoid_obstacle():
    rospy.init_node('avoid_obstacle')
-   s = rospy.Service('avoid_angle',AddTwoInts, handle_avoid_obstacle)
+   s = rospy.Service('avoid_angle',AvoidAngle, handle_avoid_obstacle)
    print "Ready to get angle"
    rospy.spin()
 

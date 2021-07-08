@@ -9,7 +9,7 @@ from ros_basic_service.srv import *
 def main_drive(x,y):
    rospy.wait_for_service('avoid_angle')
    try:
-      avoid_angle = rospy.ServiceProxy('avoid_angle', AddTwoInts)
+      avoid_angle = rospy.ServiceProxy('avoid_angle', AvoidAngle)
       resp1 = avoid_angle(x,y)
       return resp1.sum
    except rospy.ServiceException, e:
