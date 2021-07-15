@@ -2,6 +2,21 @@
 -이하생략(추후 추가 예정)
 https://htsstory.tistory.com/entry/ROS-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-python-2-%EC%84%9C%EB%B9%84%EC%8A%A4-%ED%86%B5%EC%8B%A0
 요 링크에 잘 설명되어 있음
-2.서비스 파일 수정해보기
+2.서버 파일 수정해보기
+add_two_ints_server.py 복붙해서 avoid_obstacle로 이름 변경
+def handle_add_two_ints(req):    ->   def handle_avoid_obstacle(req):                    (함수 이름 변경)
+return AddTwoIntsResponse(req.a + req.b)  ->   return AvoidAngleResponse(req.a + req.b)  (response명 변경)
+rospy.init_node('add_two_ints_server')    ->   rospy.init_node('avoid_obstacle')         (노드선언)
+rospy.Service('add_two_ints', AddTwoInts, handle_add_two_ints) -> rospy.Service('avoid_angle',AvoidAngle, handle_avoid_obstacle)   (서비스선언)
+add_two_ints_server() ->  avoid_obstacle()                                                (선언부분 추가)
 
+3.클라이언트 파일 수정해보기 
+add_two_ints_client.py 복붙해서 main_drive.py로 이름 변경 
+def add_two_ints_client(x,y):  ->   def main_drive(x,y):                                                                      (함수 이름 변경)
+rospy.wait_for_service('add_two_ints') -> rospy.wait_for_service('avoid_angle')                                               (서버파일 실행될 때까지 기다림)
+add_two_ints = rospy.ServiceProxy('add_two_ints', AddTwoInts) -> avoid_angle = rospy.ServiceProxy('avoid_angle', AvoidAngle)  (서비스 실행)
+resp1 = add_two_ints(x,y) -> resp1 = avoid_angle(x,y)                               (실행함수 변경)
+print "%s + %s = %s" %(x, y, add_two_ints_client(x,y)) ->    print "%s + %s = %s" %(x, y, main_drive(x,y))
+4.서비스파일 추가 
+srv파일 들어가서 AddTwoints.srv파일 복붙 후 이름 AvoidAngle로 변경
 
